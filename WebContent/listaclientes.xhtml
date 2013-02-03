@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f ="http://java.sun.com/jsf/core"
+	xmlns:h ="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>Lista Clientes</title>
+	</h:head>
+	<h:body>
+		<h:form>  
+  
+    <p:dataTable id="dataTable" var="cliente" value="#{clienteBean.clientes}" widgetVar="clienteTable"   
+            emptyMessage="No clientes found with given criteria" filteredValue="#{clienteBean.clientesFiltrados}">  
+         <f:facet name="header">  
+            <p:outputPanel>  
+                <h:outputText value="Pesquisar nos campos:" />  
+                <p:inputText id="globalFilter"  style="width:150px" />  
+            </p:outputPanel>  
+        </f:facet>  
+  
+        <p:column id="idColumn" filterBy="#{cliente.id}"   
+                headerText="ID" footerText="contains"  
+                filterMatchMode="exacts">  
+            <h:outputText value="#{cliente.id}" />  
+        </p:column>  
+  
+        <p:column id="clienteColumn" filterBy="#{cliente.nome}"  
+                headerText="Cliente" footerText="startsWith">  
+            <h:outputText value="#{cliente.nome}" />  
+        </p:column>  
+  
+        <p:column id="cpfColumn" filterBy="#{cliente.cpf}"   
+                headerText="CPF" footerText="exact"   
+                filterMatchMode="exact">  
+            <h:outputText value="#{cliente.cpf}" />  
+        </p:column>  
+    </p:dataTable>  
+      
+</h:form>  		
+</h:body>
+
+</html>
